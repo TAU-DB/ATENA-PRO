@@ -6,7 +6,7 @@ sessions. The repository is free for use for academic purposes. Upon using, plea
 ## The problem: Auto-generating meaningful, coherent EDA sessions.
 Deriving and communicating meaningful insights from a given dataset requires data analysts and scientists to develop complex data-driven “stories”. This is often done by thoroughly exploring and investigating the data for contextually-related patterns, gradually building a narrative, then communicating the findings in a compelling medium such as an infographic, report, or a scientific notebook.
 
-## The code - [ATENA-PRO Benchmark](benchmark/simlation)
+## The code - [ATENA-PRO Benchmark](benchmark/simulation)
 ATENA-PRO benchmark as used in our experiments described in the paper
 The benchmark, as used in our experiments, includes 3 datasets: lights, Netflix content and Google play store.
 We additionally provide implementations for all of our evaluation metrics. 
