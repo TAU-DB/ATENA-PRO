@@ -1,0 +1,6 @@
+BEGIN CHILDREN {A1}
+    A1 LIKE [F,DepartureDelay,eq,LARGE_DEALY] and CHILDREN <B1,*>
+        B1 LIKE [G,(?<col>.*),.*] and SIBLINGS {B2, B3, B4}
+        B2 LIKE  [F,(?<col>.*),eq,.*]
+        B3 LIKE  [F,(?<col>.*),eq,.*]
+        B4 LIKE  [F,(?<col>.*),eq,.*]

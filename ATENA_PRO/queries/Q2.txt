@@ -1,0 +1,7 @@
+BEGIN CHILDREN <A1>
+    A1 LIKE [F,type,eq,TV Show] and CHILDREN <B1>
+        B1 LIKE [F,duration,ge,2] and CHILDREN <C1, C2>
+            C1 LIKE [G,(?<col1>.*),.*]
+            C2 LIKE [F,(?<col1>.*),.*] and CHILDREN <D1, D2>
+                D1 LIKE [G,(?<col2>.*),.*]
+                D2 LIKE [F,(?<col2>.*),.*]

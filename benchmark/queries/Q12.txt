@@ -1,8 +1,0 @@
-BEGIN CHILDREN <A1,A2>
-    A1 LIKE [G,.*] and CHILDREN <B1>
-        B1 LIKE [G,.*] and CHILDREN <D1, D2>
-            D1 LIKE [F,type,eq,Paid]
-            D2 LIKE [F,type,eq,Free]
-    A2 LIKE [G,.*] and CHILDREN <C1, C2>
-        C1 LIKE [F,type,eq,Paid]
-        C2 LIKE [F,type,eq,Free]

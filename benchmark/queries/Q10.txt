@@ -1,7 +1,0 @@
-BEGIN CHILDREN <A1,A2>
-    A1 LIKE [F,rating,le,2.5] and CHILDREN <C1,C2>
-        C1 LIKE  [G,(?<col1>.*),(?<func1>.*),(?<agg1>.*)]
-        C2 LIKE  [G,(?<col2>.*),(?<func2>.*),(?<agg2>.*)]
-    A2 LIKE [F,rating,ge,4.7] and CHILDREN <D1,D2,*>
-        D1 LIKE  [G,(?<col1>.*),(?<func1>.*),(?<agg1>.*)]
-        D2 LIKE  [G,(?<col2>.*),(?<func2>.*),(?<agg2>.*)]

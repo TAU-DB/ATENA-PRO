@@ -1,0 +1,8 @@
+BEGIN CHILDREN <A1,A2,A3,A4>
+    A1 LIKE [G,DelayReason,.*]
+    A2 LIKE [F,DelayReason,eq,.*] and CHILDREN {B2}
+        B2 LIKE [G,.*]
+    A3 LIKE [F,DelayReason,eq,.*] and CHILDREN {B3}
+        B3 LIKE [G,.*]
+    A4 LIKE [F,DelayReason,eq,.*] and CHILDREN {B4}
+        B4 LIKE [G,.*]
