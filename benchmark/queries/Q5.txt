@@ -1,0 +1,7 @@
+BEGIN CHILDREN <A1,A2,A3>
+    A1 LIKE [G,(?<col1>.*),.*]
+    A2 LIKE [G,(?<col2>.*),.*]
+    A3 LIKE [F,Month,ge,7] and CHILDREN <B1>
+        B1 LIKE [F,Month,le,8] and CHILDREN <C3,C4,*>
+            C3 LIKE [G,(?<col1>.*),.*]
+            C4 LIKE [G,(?<col2>.*),.*]

@@ -1,0 +1,6 @@
+BEGIN CHILDREN {A1}
+A1 LIKE [F,type,eq,Movie] and CHILDREN <B1, B2>
+    B1 LIKE [F,.*] and DESCENDANTS {D1,*}
+        D1 LIKE [G,.*,AVG,duration]
+    B2 LIKE [F,.*] and DESCENDANTS {D2,*}
+        D2 LIKE [G,.*,AVG,duration]

@@ -1,0 +1,5 @@
+BEGIN CHILDREN <A1,A2>
+    A1 LIKE [G,(?<col>.*),(?<func>.*),(?<agg>.*)] and CHILDREN {B1}
+        B1 LIKE [G,installs,.*] and CHILDREN {}
+    A2 LIKE [F,installs,ge,1000000] and DESCENDANTS {D1,*}
+        D1 LIKE [G,(?<col>.*),(?<func>.*),(?<agg>.*)]

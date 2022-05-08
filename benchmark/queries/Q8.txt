@@ -1,0 +1,4 @@
+BEGIN DESCENDANTS {D1,*}
+    D1 LIKE [F,DelayReason,eq,WEATHER] and CHILDREN {B1, B2}
+        B1 LIKE [G,.*]
+        B2 LIKE [G,.*]
