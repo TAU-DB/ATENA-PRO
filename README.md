@@ -1,5 +1,5 @@
-# ATENA-PRO Benchamark
-This repository contains the automatic benchmark used to evalute ATENA-PRO,  a framework for automatic discovery of personalized data stories, in the form of analytical
+# ATENA-PRO
+This repository contains the source code and experiments used to evalute ATENA-PRO, a framework for automatic discovery of personalized data stories, in the form of analytical
 sessions. The repository is free for use for academic purposes. Upon using, please cite the paper:</br>
 ```Tavor Lipman, Tova Milo, and Amit Somech. ATENA-PRO: A Language and Architecture for Personalized Data Storytelling. PVLDB, 14(1): XXX-XXX, 2020```
 
