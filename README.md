@@ -21,9 +21,9 @@ ANON-SYS is tested on 3 different datasets:
 2. Flight-delays: Each record describes a domestic US flight, using 12 attributes such as origin/destination airport, flight duration, issuing airline, departure delay times, delay reasons, etc.
 3. Google Play Store Apps: A collection of mobile apps available on the Google Play Store. Each app is described using 11 features, such as name, category, price, num. of installs, reviews, etc.
 
-## [DXL Queries](ANON_SYS/queries)
+## [LDX Queries](ANON_SYS/queries)
 The queries directory is located [here](ANON_SYS/queries). <br/>
-Specification of the DXL queries and tasks that were used in ANON-SYS Experiments.
+Specification of the LDX queries and tasks that were used in ANON-SYS Experiments.
 
 ## [User Study Notebooks](ANON_SYS/user_study)
 The user study notebooks are located [here](ANON_SYS/user_study). <br/>
@@ -31,4 +31,4 @@ For assessing whether the generated exploratory sessions are indeed relevant to 
 and to compare ANON-SYS to alternative approaches, we conducted a user study.
 In the given link you can find the exploratory sessions that were presented to each participant of the user study.
 The directory structure is as: `<Dataset>/<Task>/<Baseline>.ipynb` (the identity of the baseline wasn't given to the participants).
-You can find the DXL query that matches each task number under [queries](ANON_SYS/queries) section.
+You can find the LDX query that matches each task number under [queries](ANON_SYS/queries) section.
