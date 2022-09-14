@@ -11,6 +11,9 @@ The source code is located [here](ANON_SYS/src). <br/>
 For installation guide, running instructions and further details please refer to the 
 documentation under the source code directory in the link above.
 
+## [Technical Report](ANON_SYS/technical_report)
+The paper's technical report is located [here](ANON_SYS/technical_report/Technical&#32;Report.pdf). <br/>
+
 ## [Datasets](ANON_SYS/datasets):
 The datasets are located [here](ANON_SYS/datasets). <br/>
 ANON-SYS is tested on 3 different datasets:
