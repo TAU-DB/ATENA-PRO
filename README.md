@@ -2,7 +2,7 @@
 This repository contains the source code and experiments used to evaluate ANON-SYS, a framework for auto-generating personalized exploration notebook. 
 The repository is free for use for academic purposes. Please contact the repository owners before usage.
 
-## The problem: Auto-generating meaningful and relevant EDA sessions.
+## The problem: Auto-generating meaningful and relevant EDA sessions
 One of the most effective methods for facilitating the process of exploring a dataset is to examine existing data exploration notebooks prepared by other data analysts or scientists. These notebooks contain curated sessions of contextually-related query operations that all together demonstrate interesting hypotheses and conjectures on the data. Unfortunately, relevant such notebooks, that had been prepared on the same dataset, and in light of the
 same analysis task – are often nonexistent or unavailable. 
 
