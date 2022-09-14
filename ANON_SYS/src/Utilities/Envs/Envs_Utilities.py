@@ -1,4 +1,4 @@
-from gym_atena_pro.envs.atena_pro_env_cont import ATENAPROEnvCont
+from gym_anon_sys.envs.atena_pro_env_cont import ATENAPROEnvCont
 from arguments import ArchName
 import Utilities.Configuration.config as cfg
 

@@ -17,9 +17,9 @@ from scipy.stats import entropy
 import Utilities.Configuration.config as cfg
 from Utilities.Collections.Counter_Without_Nans import CounterWithoutNanKeys
 from arguments import FilterTermsBinsSizes
-from gym_atena_pro.envs.session_tree_similarity import encode_succint, encode_to_matrix, get_tree_info
-import gym_atena_pro.lib.helpers as ATENAUtils
-from gym_atena_pro.lib.helpers import (
+from gym_anon_sys.envs.session_tree_similarity import encode_succint, encode_to_matrix, get_tree_info
+import gym_anon_sys.lib.helpers as ATENAUtils
+from gym_anon_sys.lib.helpers import (
     DisplayTuple
 )
 

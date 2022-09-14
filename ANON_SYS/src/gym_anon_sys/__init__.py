@@ -13,5 +13,5 @@ register(
 
 register(
     id='ATENAPROcont-v0',
-    entry_point='gym_atena_pro.envs.atena_pro_env_cont:ATENAPROEnvCont',
+    entry_point='gym_anon_sys.envs.atena_pro_env_cont:ATENAPROEnvCont',
 )

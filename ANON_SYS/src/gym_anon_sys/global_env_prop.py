@@ -7,13 +7,13 @@ import os
 
 import Utilities.Configuration.config as cfg
 from arguments import SchemaName
-from gym_atena_pro.lib.flight_delays_helpers import create_flights_env_properties
-from gym_atena_pro.lib.networking_helpers import create_networking_env_properties
-from gym_atena_pro.lib.big_flights_helpers import create_big_flights_env_properties
-from gym_atena_pro.lib.wide_flights_helpers import create_wide_flights_env_properties
-from gym_atena_pro.lib.wide12_flights_helpers import create_wide12_flights_env_properties
-from gym_atena_pro.lib.netflix_helpers import create_netflix_env_properties
-from gym_atena_pro.lib.play_store_helpers import create_play_store_env_properties
+from gym_anon_sys.lib.flight_delays_helpers import create_flights_env_properties
+from gym_anon_sys.lib.networking_helpers import create_networking_env_properties
+from gym_anon_sys.lib.big_flights_helpers import create_big_flights_env_properties
+from gym_anon_sys.lib.wide_flights_helpers import create_wide_flights_env_properties
+from gym_anon_sys.lib.wide12_flights_helpers import create_wide12_flights_env_properties
+from gym_anon_sys.lib.netflix_helpers import create_netflix_env_properties
+from gym_anon_sys.lib.play_store_helpers import create_play_store_env_properties
 
 global_env_prop = None
 

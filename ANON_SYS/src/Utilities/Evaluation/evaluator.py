@@ -27,8 +27,8 @@ from Utilities.Evaluation.evaluation_measures import (
 import Utilities.Configuration.config as cfg
 from arguments import ArchName, SchemaName
 from Utilities.Notebook.NotebookUtils import *
-import gym_atena_pro.lib.helpers as ATENAUtils
-import gym_atena_pro.global_env_prop as gep
+import gym_anon_sys.lib.helpers as ATENAUtils
+import gym_anon_sys.global_env_prop as gep
 
 import matplotlib.pyplot as plt
 import seaborn as sns

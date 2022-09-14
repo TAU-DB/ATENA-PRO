@@ -18,11 +18,11 @@ import Utilities.Configuration.config as cfg
 from Utilities.Evaluation.evaluation_measures import draw_nx_display_tree
 from Utilities.Utility_Functions import initialize_agent_and_env
 from arguments import SchemaName, ArchName
-from gym_atena_pro.envs.atena_pro_env_cont import ATENAPROEnvCont
-import gym_atena_pro.lib.helpers as ATENAUtils
-from gym_atena_pro.global_env_prop import update_global_env_prop_from_cfg
-from gym_atena_pro.lib.networking_helpers import convert_to_action_vector
-from gym_atena_pro.reactida.utils.utilities import Repository
+from gym_anon_sys.envs.atena_pro_env_cont import ATENAPROEnvCont
+import gym_anon_sys.lib.helpers as ATENAUtils
+from gym_anon_sys.global_env_prop import update_global_env_prop_from_cfg
+from gym_anon_sys.lib.networking_helpers import convert_to_action_vector
+from gym_anon_sys.reactida.utils.utilities import Repository
 from train_agent_chainerrl import act_most_probable
 
 

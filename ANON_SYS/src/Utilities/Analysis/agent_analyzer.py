@@ -18,9 +18,9 @@ import seaborn as sns
 
 import pandas as pd
 
-from gym_atena_pro.envs.atena_pro_env_cont import ATENAPROEnvCont
-import gym_atena_pro.lib.helpers as ATENAUtils
-from gym_atena_pro.lib.helpers import (
+from gym_anon_sys.envs.atena_pro_env_cont import ATENAPROEnvCont
+import gym_anon_sys.lib.helpers as ATENAUtils
+from gym_anon_sys.lib.helpers import (
     ActionVectorEntry,
 )
 
@@ -29,7 +29,7 @@ from arguments import ArchName
 from Utilities.Utility_Functions import initialize_agent_and_env
 from models.Greedy.greedy_agent import GreedyAgent
 
-import gym_atena_pro.global_env_prop as gep
+import gym_anon_sys.global_env_prop as gep
 
 StepInfo = namedtuple('StepInfo', 'continuous_action reward info')
 

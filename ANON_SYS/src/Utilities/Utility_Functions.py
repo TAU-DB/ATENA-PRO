@@ -13,7 +13,7 @@ from models.clipped_gaussian.train_ppo_gym import PPOModel
 from models.clipped_gaussian.train_trpo_gym import TRPOModel
 
 import Utilities.Configuration.config as cfg
-from gym_atena_pro.envs.atena_pro_env_cont import ATENAPROEnvCont
+from gym_anon_sys.envs.atena_pro_env_cont import ATENAPROEnvCont
 
 
 def reformat_user_input_query(user_uqery):

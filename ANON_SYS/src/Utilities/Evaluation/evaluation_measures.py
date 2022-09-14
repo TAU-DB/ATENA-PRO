@@ -15,13 +15,13 @@ from nltk.translate.gleu_score import sentence_gleu, corpus_gleu
 from nltk.translate import bleu_score as nltk_bleu
 from zss import Node, simple_distance
 
-from gym_atena_pro.envs.atena_pro_env_cont import ATENAPROEnvCont
-from gym_atena_pro.lib.helpers import (
+from gym_anon_sys.envs.atena_pro_env_cont import ATENAPROEnvCont
+from gym_anon_sys.lib.helpers import (
     OPERATOR_TYPE_LOOKUP,
     INT_OPERATOR_MAP_ATENA_STR,
 )
-import gym_atena_pro.global_env_prop as gep
-from gym_atena_pro.reactida.utils.distance import display_distance
+import gym_anon_sys.global_env_prop as gep
+from gym_anon_sys.reactida.utils.distance import display_distance
 
 
 class PositiveNegativeStats(object):

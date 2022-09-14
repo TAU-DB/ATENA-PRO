@@ -3,7 +3,7 @@ import gym
 
 import Utilities.Configuration.config as cfg
 from Utilities.Utility_Functions import initialize_agent_and_env
-from gym_atena_pro.envs.atena_pro_env_cont import ATENAPROEnvCont
+from gym_anon_sys.envs.atena_pro_env_cont import ATENAPROEnvCont
 
 
 def run_random(env, agent=None, dataset_number=None):

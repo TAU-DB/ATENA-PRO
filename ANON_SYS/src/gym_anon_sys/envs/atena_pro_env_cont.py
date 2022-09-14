@@ -24,15 +24,15 @@ from gym import spaces
 from scipy.stats import entropy
 import scipy
 
-# from gym_atena_pro.envs.session_graph import create_tree_from_env
+# from gym_anon_sys.envs.session_graph import create_tree_from_env
 from dep_tregex.dep_tregex import parse_pattern, TregexTree
-from gym_atena_pro.envs.session_tree_similarity import simple_included, anytree_to_zss_tree, anytree_to_postorder_zss_tree, \
+from gym_anon_sys.envs.session_tree_similarity import simple_included, anytree_to_zss_tree, anytree_to_postorder_zss_tree, \
     prefix_included
-from gym_atena_pro.lib.tokenization import tokenize_column, get_nearest_neighbor_token, gep
-#from gym_atena_pro.reactida.utils.utilities import Repository
-from gym_atena_pro.reactida.utils.distance import display_distance
-import gym_atena_pro.lib.helpers as ATENAUtils
-from gym_atena_pro.lib.helpers import (
+from gym_anon_sys.lib.tokenization import tokenize_column, get_nearest_neighbor_token, gep
+#from gym_anon_sys.reactida.utils.utilities import Repository
+from gym_anon_sys.reactida.utils.distance import display_distance
+import gym_anon_sys.lib.helpers as ATENAUtils
+from gym_anon_sys.lib.helpers import (
     normalized_sigmoid_fkt,
     get_aggregate_attributes,
     empty_env_state,

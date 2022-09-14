@@ -10,7 +10,7 @@ from future import standard_library
 
 import Utilities.Configuration.config as cfg
 from arguments import ArchName, SchemaName
-from gym_atena_pro.global_env_prop import update_global_env_prop_from_cfg
+from gym_anon_sys.global_env_prop import update_global_env_prop_from_cfg
 
 standard_library.install_aliases()  # NOQA
 
@@ -27,8 +27,8 @@ from chainerrl.experiments.evaluator import save_agent
 from chainerrl.misc.ask_yes_no import ask_yes_no
 from os import makedirs
 
-from gym_atena_pro.envs.atena_pro_env_cont import ATENAPROEnvCont
-import gym_atena_pro.lib.helpers as ATENAUtils
+from gym_anon_sys.envs.atena_pro_env_cont import ATENAPROEnvCont
+import gym_anon_sys.lib.helpers as ATENAUtils
 
 from tensorboard import summary
 from tensorboardX import SummaryWriter

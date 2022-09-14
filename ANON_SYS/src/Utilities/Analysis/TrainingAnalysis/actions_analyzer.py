@@ -11,11 +11,11 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 
-import gym_atena_pro.lib.helpers as ATENAUtils
+import gym_anon_sys.lib.helpers as ATENAUtils
 
 
 import Utilities.Configuration.config as cfg
-import gym_atena_pro.global_env_prop as gep
+import gym_anon_sys.global_env_prop as gep
 
 
 
