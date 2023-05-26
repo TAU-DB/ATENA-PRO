@@ -1,0 +1,29 @@
+One possible solution is to group the dataset by country and calculate the average duration of titles watched in each country. Then, we can compare the distribution of these averages to the overall distribution of durations. A country with a significantly different average duration may have atypical viewing habits.
+
+Here's the code:
+
+```python
+import pandas as pd
+import numpy as np
+
+# load the dataset
+df = pd.read_csv('netflix.tsv', sep='\t')
+
+# calculate the average duration of titles watched in each country
+country_duration = df.groupby('country')['duration'].apply(lambda x: np.mean([int(d[:-4]) for d in x]))
+country_duration = country_duration.dropna()  # remove countries with missing data
+
+# calculate the overall distribution of durations
+overall_duration = df['duration'].apply(lambda x: int(x[:-4]))
+overall_mean = overall_duration.mean()
+overall_std = overall_duration.std()
+
+# compare the distribution of country averages to the overall distribution
+z_scores = (country_duration - overall_mean) / overall_std
+outliers = z_scores[abs(z_scores) > 2]  # consider countries with z-score > 2 as outliers
+
+# print the outliers
+print(outliers)
+```
+
+This code outputs a list of countries with significantly different average durations compared to the rest of the world. The threshold for considering a country as an outlier is set to z-score > 2, which corresponds to a p-value of 0.05 (assuming a normal distribution). However, this threshold can be adjusted depending on the desired level of significance.

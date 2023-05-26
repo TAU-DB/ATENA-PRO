@@ -1,0 +1,5 @@
+dataset file name: 'netflix.tsv'
+dataset scheme: show_id, type, title, director, cast, country, date_added, release_year, rating, duration, listed_in, description
+
+write pandas code to answer the following task for the dataset provided above:
+find a country with different, atypical viewing habits, compared to the rest of the world
