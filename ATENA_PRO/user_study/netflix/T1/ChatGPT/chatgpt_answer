@@ -1,29 +1,40 @@
-One possible solution is to group the dataset by country and calculate the average duration of titles watched in each country. Then, we can compare the distribution of these averages to the overall distribution of durations. A country with a significantly different average duration may have atypical viewing habits.
+As there are no numeric columns in the dataset, we cannot use statistical methods to identify atypical viewing habits. However, we can use the country column and the external knowledge provided to identify countries with different viewing habits compared to the rest of the world.
 
-Here's the code:
+One approach could be to calculate the percentage of TV shows and movies in each country and compare it to the global percentage. We can assume that countries with a significantly different percentage of TV shows or movies compared to the global percentage have different viewing habits.
+
+Here's the pandas code to implement this approach:
 
 ```python
 import pandas as pd
-import numpy as np
 
 # load the dataset
 df = pd.read_csv('netflix.tsv', sep='\t')
 
-# calculate the average duration of titles watched in each country
-country_duration = df.groupby('country')['duration'].apply(lambda x: np.mean([int(d[:-4]) for d in x]))
-country_duration = country_duration.dropna()  # remove countries with missing data
+# filter TV shows and movies
+df_tv = df[df['type'] == 'TV Show']
+df_movie = df[df['type'] == 'Movie']
 
-# calculate the overall distribution of durations
-overall_duration = df['duration'].apply(lambda x: int(x[:-4]))
-overall_mean = overall_duration.mean()
-overall_std = overall_duration.std()
+# calculate the global percentage of TV shows and movies
+global_tv_percent = len(df_tv) / len(df) * 100
+global_movie_percent = len(df_movie) / len(df) * 100
 
-# compare the distribution of country averages to the overall distribution
-z_scores = (country_duration - overall_mean) / overall_std
-outliers = z_scores[abs(z_scores) > 2]  # consider countries with z-score > 2 as outliers
+# group by country and calculate the percentage of TV shows and movies
+country_tv_percent = df_tv.groupby('country').size() / df.groupby('country').size() * 100
+country_movie_percent = df_movie.groupby('country').size() / df.groupby('country').size() * 100
 
-# print the outliers
-print(outliers)
+# compare the country percentages to the global percentages
+atypical_countries = []
+for country in country_tv_percent.index:
+    tv_percent = country_tv_percent[country]
+    movie_percent = country_movie_percent[country]
+    if abs(tv_percent - global_tv_percent) > 10 or abs(movie_percent - global_movie_percent) > 10:
+        atypical_countries.append(country)
+
+print('Countries with atypical viewing habits:', atypical_countries)
 ```
 
-This code outputs a list of countries with significantly different average durations compared to the rest of the world. The threshold for considering a country as an outlier is set to z-score > 2, which corresponds to a p-value of 0.05 (assuming a normal distribution). However, this threshold can be adjusted depending on the desired level of significance.
+In this code, we first filter the dataset to separate TV shows and movies. Then, we calculate the global percentage of TV shows and movies by dividing the number of TV shows/movies by the total number of entries in the dataset. 
+
+Next, we group the dataset by country and calculate the percentage of TV shows and movies for each country. We then compare the country percentages to the global percentages and identify countries with a difference of more than 10%. We consider these countries to have atypical viewing habits.
+
+Finally, we print the list of atypical countries. Note that the threshold of 10% is arbitrary and can be adjusted based on the specific requirements of the task.
