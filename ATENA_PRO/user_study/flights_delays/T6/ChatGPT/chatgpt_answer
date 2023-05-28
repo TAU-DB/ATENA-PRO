@@ -1,0 +1,10 @@
+import pandas as pd
+
+# Load the dataset
+df = pd.read_csv('flights.tsv', delimiter='\t')
+
+# Group the data by delay reason and count the number of occurrences
+delay_reason_counts = df.groupby('delay_reason')['flight_id'].count()
+
+# Print the results
+print(delay_reason_counts)

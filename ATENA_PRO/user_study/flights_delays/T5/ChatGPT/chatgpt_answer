@@ -1,0 +1,30 @@
+Assuming that the 'month' column contains the month number (e.g. January = 1, February = 2, etc.), the following code can be used to show interesting properties of flights in the summer:
+
+```python
+import pandas as pd
+
+# Load the dataset
+df = pd.read_csv('flights.tsv', sep='\t')
+
+# Filter for flights in the summer (June, July, August)
+summer_flights = df[df['month'].isin([6, 7, 8])]
+
+# Calculate the average departure delay for each airline
+avg_delay_by_airline = summer_flights.groupby('airline')['departure_delay'].mean()
+
+# Calculate the total number of flights for each airline
+num_flights_by_airline = summer_flights['airline'].value_counts()
+
+# Calculate the percentage of delayed flights for each airline
+delayed_flights_by_airline = summer_flights[summer_flights['departure_delay'] > 0]['airline'].value_counts() / num_flights_by_airline
+
+# Print the results
+print("Average departure delay by airline in the summer:")
+print(avg_delay_by_airline)
+print("\nTotal number of flights by airline in the summer:")
+print(num_flights_by_airline)
+print("\nPercentage of delayed flights by airline in the summer:")
+print(delayed_flights_by_airline)
+```
+
+This code first filters the dataset to only include flights in the summer (June, July, August). It then calculates three interesting properties for these flights:

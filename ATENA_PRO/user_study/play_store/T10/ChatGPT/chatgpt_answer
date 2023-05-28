@@ -1,0 +1,60 @@
+1. Load the dataset into a pandas dataframe:
+
+```python
+import pandas as pd
+
+df = pd.read_csv('1.tsv', sep='\t')
+```
+
+2. Define high-rated and low-rated apps based on the median rating:
+
+```python
+median_rating = df['rating'].median()
+high_rated = df[df['rating'] >= median_rating]
+low_rated = df[df['rating'] < median_rating]
+```
+
+3. Compare the average number of reviews for high-rated and low-rated apps:
+
+```python
+print("Average number of reviews for high-rated apps:", high_rated['reviews'].mean())
+print("Average number of reviews for low-rated apps:", low_rated['reviews'].mean())
+```
+
+4. Compare the average app size for high-rated and low-rated apps:
+
+```python
+print("Average app size for high-rated apps (in MB):", high_rated['app_size_kb'].mean() / 1024)
+print("Average app size for low-rated apps (in MB):", low_rated['app_size_kb'].mean() / 1024)
+```
+
+5. Compare the average number of installs for high-rated and low-rated apps:
+
+```python
+print("Average number of installs for high-rated apps:", high_rated['installs'].mean())
+print("Average number of installs for low-rated apps:", low_rated['installs'].mean())
+```
+
+6. Compare the average price for high-rated and low-rated apps:
+
+```python
+print("Average price for high-rated apps:", high_rated['price'].mean())
+print("Average price for low-rated apps:", low_rated['price'].mean())
+```
+
+7. Compare the distribution of app categories for high-rated and low-rated apps:
+
+```python
+import matplotlib.pyplot as plt
+
+high_rated_categories = high_rated['category'].value_counts()
+low_rated_categories = low_rated['category'].value_counts()
+
+fig, ax = plt.subplots(1, 2, figsize=(10, 5))
+ax[0].barh(high_rated_categories.index, high_rated_categories.values)
+ax[0].set_title('High-rated apps')
+ax[1].barh(low_rated_categories.index, low_rated_categories.values)
+ax[1].set_title('Low-rated apps')
+plt.tight_layout()
+plt.show()
+```
