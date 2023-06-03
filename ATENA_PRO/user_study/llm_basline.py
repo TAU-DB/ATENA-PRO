@@ -9,7 +9,7 @@ NETFLIX_NUMERIC_COLUMNS = "show_id, release_year"
 FLIGHTS_FILENAME = "flights.tsv"
 FLIGHTS_SCHEME = "flight_id, airline, origin_airport, destination_airport, flight_number, delay_reason, departure_delay, scheduled_trip_time, scheduled_departure, scheduled_arrival, day_of_week, day_of_month, month"
 FLIGHTS_NUMERIC_COLUMNS = "no numeric columns"
-PLAYSTORE_FILENAME = "1.tsv"
+PLAYSTORE_FILENAME = "play_store.tsv"
 PLAYSTORE_SCHEME = "app_id, name, category, rating, reviews, app_size_kb, installs, type, price, content_rating, last_updated, min_android_ver"
 PLAYSTORE_NUMERIC_COLUMNS = "rating, reviews, app_size_kb, installs, price"
 
@@ -49,7 +49,7 @@ t2 = "investigate the properties of “successful” TV shows that have more tha
 t6 = "explore different reasons of flight delays"
 t5 = "show interesting properties of flights in the summer"
 t9 = "show properties of apps with at least one million installs"
-t10 = "compare high-rated apps with low-rated apps"
+t10 = "compare high-rated (4.7 and above) apps with low-rated (2.5 and below) apps"
 
 # netflix_external_knowledge = "for TV shows use type equals \'TV Show\' and for movies \'Movie\'. these are the only values in the column \'type\'"
 
