@@ -8,7 +8,7 @@ NETFLIX_SCHEME = "show_id, type, title, director, cast, country, date_added, rel
 NETFLIX_NUMERIC_COLUMNS = "show_id, release_year"
 FLIGHTS_FILENAME = "flights.tsv"
 FLIGHTS_SCHEME = "flight_id, airline, origin_airport, destination_airport, flight_number, delay_reason, departure_delay, scheduled_trip_time, scheduled_departure, scheduled_arrival, day_of_week, day_of_month, month"
-FLIGHTS_NUMERIC_COLUMNS = "no numeric columns"
+FLIGHTS_NUMERIC_COLUMNS = "departure_delay, scheduled_trip_time, scheduled_departure, scheduled_arrival"
 PLAYSTORE_FILENAME = "play_store.tsv"
 PLAYSTORE_SCHEME = "app_id, name, category, rating, reviews, app_size_kb, installs, type, price, content_rating, last_updated, min_android_ver"
 PLAYSTORE_NUMERIC_COLUMNS = "rating, reviews, app_size_kb, installs, price"
@@ -59,3 +59,15 @@ t10 = "compare high-rated (4.7 and above) apps with low-rated (2.5 and below) ap
 # print(ChatGPT(createPrompt(filename=FLIGHTS_FILENAME, scheme=FLIGHTS_SCHEME, numeric_columns=FLIGHTS_NUMERIC_COLUMNS, task=t6)))
 # print(ChatGPT(createPrompt(filename=PLAYSTORE_FILENAME, scheme=PLAYSTORE_SCHEME, numeric_columns=PLAYSTORE_NUMERIC_COLUMNS, task=t9)))
 # print(ChatGPT(createPrompt(filename=PLAYSTORE_FILENAME, scheme=PLAYSTORE_SCHEME, numeric_columns=PLAYSTORE_NUMERIC_COLUMNS, task=t10)))
+
+
+import pandas as pd
+
+# Read the dataset from the TSV file
+df = pd.read_csv('/Users/ozzafar/PycharmProjects/ATENA-PRO/ATENA_PRO/datasets/ds_salaries.tsv', delimiter='\t')
+
+# Calculate the 90th percentile salary
+salary_90_percentile = df['salary_in_usd'].quantile(0.9)
+salary_50_percentile = df['salary_in_usd'].quantile(0.5)
+print(salary_90_percentile)
+print(salary_50_percentile)

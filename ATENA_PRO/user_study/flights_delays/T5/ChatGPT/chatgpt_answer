@@ -26,5 +26,3 @@ print(num_flights_by_airline)
 print("\nPercentage of delayed flights by airline in the summer:")
 print(delayed_flights_by_airline)
 ```
-
-This code first filters the dataset to only include flights in the summer (June, July, August). It then calculates three interesting properties for these flights:

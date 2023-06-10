@@ -1,6 +1,7 @@
+
 Dataset file name: 'flights.tsv'
 Dataset scheme: flight_id, airline, origin_airport, destination_airport, flight_number, delay_reason, departure_delay, scheduled_trip_time, scheduled_departure, scheduled_arrival, day_of_week, day_of_month, month
-Dataset numeric columns: no numeric columns
+Dataset numeric columns: departure_delay, scheduled_trip_time, scheduled_departure, scheduled_arrival
 
 Write pandas code to answer the following task for the dataset provided above:
 show interesting properties of flights in the summer
