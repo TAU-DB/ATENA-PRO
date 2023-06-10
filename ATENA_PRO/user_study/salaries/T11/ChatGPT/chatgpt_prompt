@@ -1,0 +1,6 @@
+Dataset file name: 'ds_salaries.tsv'
+Dataset scheme: work_year, experience_level, employment_type, job_title, salary, salary_currency, salary_in_usd, employee_residence, remote_ratio, company_location
+Dataset numeric columns: work_year, salary, salary_in_usd, remote_ratio
+
+Write pandas code to answer the following task for the dataset provided above:
+investigate the characteristics of employees in the 90th percentile of salaries (earning above $219,000, according to this dataset)

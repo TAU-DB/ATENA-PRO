@@ -12,6 +12,9 @@ FLIGHTS_NUMERIC_COLUMNS = "departure_delay, scheduled_trip_time, scheduled_depar
 PLAYSTORE_FILENAME = "play_store.tsv"
 PLAYSTORE_SCHEME = "app_id, name, category, rating, reviews, app_size_kb, installs, type, price, content_rating, last_updated, min_android_ver"
 PLAYSTORE_NUMERIC_COLUMNS = "rating, reviews, app_size_kb, installs, price"
+SALARIES_FILENAME = "1.tsv"
+SALARIES_SCHEME = "work_year, experience_level, employment_type, job_title, salary, salary_currency, salary_in_usd, employee_residence, remote_ratio, company_location"
+SALARIES_NUMERIC_COLUMNS = "work_year, salary, salary_in_usd, remote_ratio"
 
 def ChatGPT(prompt, should_print=False):
     completion = openai.ChatCompletion.create(
@@ -50,6 +53,7 @@ t6 = "explore different reasons of flight delays"
 t5 = "show interesting properties of flights in the summer"
 t9 = "show properties of apps with at least one million installs"
 t10 = "compare high-rated (4.7 and above) apps with low-rated (2.5 and below) apps"
+t11 = "investigate the characteristics of employees in the 90th percentile of salaries (earning above 219,000 usd, according to this dataset)"
 
 # netflix_external_knowledge = "for TV shows use type equals \'TV Show\' and for movies \'Movie\'. these are the only values in the column \'type\'"
 
@@ -59,15 +63,14 @@ t10 = "compare high-rated (4.7 and above) apps with low-rated (2.5 and below) ap
 # print(ChatGPT(createPrompt(filename=FLIGHTS_FILENAME, scheme=FLIGHTS_SCHEME, numeric_columns=FLIGHTS_NUMERIC_COLUMNS, task=t6)))
 # print(ChatGPT(createPrompt(filename=PLAYSTORE_FILENAME, scheme=PLAYSTORE_SCHEME, numeric_columns=PLAYSTORE_NUMERIC_COLUMNS, task=t9)))
 # print(ChatGPT(createPrompt(filename=PLAYSTORE_FILENAME, scheme=PLAYSTORE_SCHEME, numeric_columns=PLAYSTORE_NUMERIC_COLUMNS, task=t10)))
+print(ChatGPT(createPrompt(filename=SALARIES_FILENAME, scheme=SALARIES_SCHEME, numeric_columns=SALARIES_NUMERIC_COLUMNS, task=t11)))
 
 
 import pandas as pd
 
 # Read the dataset from the TSV file
-df = pd.read_csv('/Users/ozzafar/PycharmProjects/ATENA-PRO/ATENA_PRO/datasets/ds_salaries.tsv', delimiter='\t')
-
-# Calculate the 90th percentile salary
-salary_90_percentile = df['salary_in_usd'].quantile(0.9)
-salary_50_percentile = df['salary_in_usd'].quantile(0.5)
-print(salary_90_percentile)
-print(salary_50_percentile)
+# df = pd.read_csv('/Users/ozzafar/PycharmProjects/ATENA-PRO/ATENA_PRO/datasets/1.tsv', delimiter='\t')
+# salary_90_percentile = df['salary_in_usd'].quantile(0.9)
+# salary_50_percentile = df['salary_in_usd'].quantile(0.5)
+# print(salary_90_percentile)
+# print(salary_50_percentile)
