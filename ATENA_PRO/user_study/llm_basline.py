@@ -7,8 +7,8 @@ NETFLIX_FILENAME = "netflix.tsv"
 NETFLIX_SCHEME = "show_id, type, title, director, cast, country, date_added, release_year, rating, duration, listed_in, description"
 NETFLIX_NUMERIC_COLUMNS = "show_id, release_year"
 FLIGHTS_FILENAME = "flights.tsv"
-FLIGHTS_SCHEME = "flight_id, airline, origin_airport, destination_airport, flight_number, delay_reason, departure_delay, scheduled_trip_time, scheduled_departure, scheduled_arrival, day_of_week, day_of_month, month"
-FLIGHTS_NUMERIC_COLUMNS = "departure_delay, scheduled_trip_time, scheduled_departure, scheduled_arrival"
+FLIGHTS_SCHEME = "FLIGHT_NUMBER, AIRLINE, ORIGIN_AIRPORT, DESTINATION_AIRPORT, AIR_SYSTEM_DELAY, SECURITY_DELAY, AIRLINE_DELAY, LATE_AIRCRAFT_DELAY, WEATHER_DELAY, DEPARTURE_DELAY, SCHEDULED_DEPARTURE, SCHEDULED_TIME, SCHEDULED_ARRIVAL, DAY_OF_WEEK, DAY_OF_YEAR, MONTH"
+FLIGHTS_NUMERIC_COLUMNS = "DEPARTURE_DELAY"
 PLAYSTORE_FILENAME = "play_store.tsv"
 PLAYSTORE_SCHEME = "app_id, name, category, rating, reviews, app_size_kb, installs, type, price, content_rating, last_updated, min_android_ver"
 PLAYSTORE_NUMERIC_COLUMNS = "rating, reviews, app_size_kb, installs, price"
@@ -30,12 +30,9 @@ def ChatGPT(prompt, should_print=False):
         print(res)
     return res
 
-
 def createPrompt(filename, scheme, numeric_columns, task):
     print("--------------------------------")
     print(task)
-
-    # External Knowledge: {external_knowledge}
 
     return f"""
 Dataset file name: \'{filename}\'
@@ -45,8 +42,6 @@ Dataset numeric columns: {numeric_columns}
 Write pandas code to answer the following task for the dataset provided above:
 {task}"""
 
-
-
 t1 = "find a country with different, atypical viewing habits, compared to the rest of the world"
 t2 = "investigate the properties of “successful” TV shows that have more than one season"
 t6 = "explore different reasons of flight delays"
@@ -55,22 +50,10 @@ t9 = "show properties of apps with at least one million installs"
 t10 = "compare high-rated (4.7 and above) apps with low-rated (2.5 and below) apps"
 t11 = "investigate the characteristics of employees in the 90th percentile of salaries (earning above 219,000 usd, according to this dataset)"
 
-# netflix_external_knowledge = "for TV shows use type equals \'TV Show\' and for movies \'Movie\'. these are the only values in the column \'type\'"
-
 # print(ChatGPT(createPrompt(filename=NETFLIX_FILENAME, scheme=NETFLIX_SCHEME, numeric_columns=NETFLIX_NUMERIC_COLUMNS, task=t1)))
 # print(ChatGPT(createPrompt(filename=NETFLIX_FILENAME, scheme=NETFLIX_SCHEME, numeric_columns=NETFLIX_NUMERIC_COLUMNS, task=t2)))
 # print(ChatGPT(createPrompt(filename=FLIGHTS_FILENAME, scheme=FLIGHTS_SCHEME, numeric_columns=FLIGHTS_NUMERIC_COLUMNS, task=t5)))
 # print(ChatGPT(createPrompt(filename=FLIGHTS_FILENAME, scheme=FLIGHTS_SCHEME, numeric_columns=FLIGHTS_NUMERIC_COLUMNS, task=t6)))
 # print(ChatGPT(createPrompt(filename=PLAYSTORE_FILENAME, scheme=PLAYSTORE_SCHEME, numeric_columns=PLAYSTORE_NUMERIC_COLUMNS, task=t9)))
 # print(ChatGPT(createPrompt(filename=PLAYSTORE_FILENAME, scheme=PLAYSTORE_SCHEME, numeric_columns=PLAYSTORE_NUMERIC_COLUMNS, task=t10)))
-print(ChatGPT(createPrompt(filename=SALARIES_FILENAME, scheme=SALARIES_SCHEME, numeric_columns=SALARIES_NUMERIC_COLUMNS, task=t11)))
-
-
-import pandas as pd
-
-# Read the dataset from the TSV file
-# df = pd.read_csv('/Users/ozzafar/PycharmProjects/ATENA-PRO/ATENA_PRO/datasets/1.tsv', delimiter='\t')
-# salary_90_percentile = df['salary_in_usd'].quantile(0.9)
-# salary_50_percentile = df['salary_in_usd'].quantile(0.5)
-# print(salary_90_percentile)
-# print(salary_50_percentile)
+# print(ChatGPT(createPrompt(filename=SALARIES_FILENAME, scheme=SALARIES_SCHEME, numeric_columns=SALARIES_NUMERIC_COLUMNS, task=t11)))

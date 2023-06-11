@@ -1,28 +1,23 @@
-Assuming that the 'month' column contains the month number (e.g. January = 1, February = 2, etc.), the following code can be used to show interesting properties of flights in the summer:
+show interesting properties of flights in the summer
+(assuming summer months are June, July, and August)
 
-```python
 import pandas as pd
 
-# Load the dataset
-df = pd.read_csv('flights.tsv', sep='\t')
+# read the dataset
+df = pd.read_csv('flights.tsv', delimiter='\t')
 
-# Filter for flights in the summer (June, July, August)
-summer_flights = df[df['month'].isin([6, 7, 8])]
+# filter for summer months
+summer_df = df[(df['MONTH'] >= 6) & (df['MONTH'] <= 8)]
 
-# Calculate the average departure delay for each airline
-avg_delay_by_airline = summer_flights.groupby('airline')['departure_delay'].mean()
+# calculate average departure delay for summer flights
+avg_delay = summer_df['DEPARTURE_DELAY'].mean()
+print("Average departure delay for summer flights:", avg_delay)
 
-# Calculate the total number of flights for each airline
-num_flights_by_airline = summer_flights['airline'].value_counts()
+# calculate the number of flights for each airline in the summer
+airline_counts = summer_df['AIRLINE'].value_counts()
+print("Number of flights for each airline in the summer:\n", airline_counts)
 
-# Calculate the percentage of delayed flights for each airline
-delayed_flights_by_airline = summer_flights[summer_flights['departure_delay'] > 0]['airline'].value_counts() / num_flights_by_airline
-
-# Print the results
-print("Average departure delay by airline in the summer:")
-print(avg_delay_by_airline)
-print("\nTotal number of flights by airline in the summer:")
-print(num_flights_by_airline)
-print("\nPercentage of delayed flights by airline in the summer:")
-print(delayed_flights_by_airline)
-```
+# calculate the percentage of delayed flights in the summer
+delayed_flights = summer_df[summer_df['DEPARTURE_DELAY'] > 0]
+delayed_percentage = (len(delayed_flights) / len(summer_df)) * 100
+print("Percentage of delayed flights in the summer:", delayed_percentage)
