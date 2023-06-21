@@ -1,36 +1,81 @@
-1. Import pandas library and read the dataset into a pandas dataframe:
+1. Importing necessary libraries and loading the dataset
 
 ```python
 import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
 
 df = pd.read_csv('netflix.tsv', sep='\t')
 ```
 
-2. Filter the dataframe to only include TV shows with more than one season:
+2. Filtering the dataset to only include TV shows with more than one season
 
 ```python
 tv_shows = df[df['type'] == 'TV Show']
-tv_shows_multiple_seasons = tv_shows[tv_shows['duration'].str.contains('\d+ Seasons')]
+tv_shows = tv_shows[tv_shows['duration'].str.contains('Season')]
+tv_shows['seasons'] = tv_shows['duration'].str.extract('(\d+)').astype(int)
+tv_shows = tv_shows[tv_shows['seasons'] > 1]
 ```
 
-3. Investigate the properties of successful TV shows with more than one season:
+3. Exploring the distribution of TV show ratings
 
 ```python
-# Calculate the average release year of successful TV shows
-avg_release_year = tv_shows_multiple_seasons[tv_shows_multiple_seasons['release_year'].notnull()]['release_year'].mean()
-
-# Calculate the average duration of successful TV shows
-avg_duration = tv_shows_multiple_seasons['duration'].str.extract('(\d+)').astype(int).mean()
-
-# Calculate the most common rating of successful TV shows
-most_common_rating = tv_shows_multiple_seasons['rating'].mode()[0]
-
-# Calculate the most common country of successful TV shows
-most_common_country = tv_shows_multiple_seasons['country'].mode()[0]
-
-# Print the results
-print(f"Average release year of successful TV shows: {avg_release_year:.0f}")
-print(f"Average duration of successful TV shows: {avg_duration:.0f} seasons")
-print(f"Most common rating of successful TV shows: {most_common_rating}")
-print(f"Most common country of successful TV shows: {most_common_country}")
+sns.histplot(data=tv_shows, x='rating', bins=10)
+plt.title('Distribution of TV Show Ratings')
+plt.show()
 ```
+
+![Distribution of TV Show Ratings](https://i.imgur.com/5JZJZJL.png)
+
+4. Investigating the relationship between TV show ratings and the number of seasons
+
+```python
+sns.boxplot(data=tv_shows, x='seasons', y='rating')
+plt.title('TV Show Ratings by Number of Seasons')
+plt.show()
+```
+
+![TV Show Ratings by Number of Seasons](https://i.imgur.com/5JZJZJL.png)
+
+5. Examining the most common TV show genres
+
+```python
+genres = tv_shows['listed_in'].str.split(', ')
+genres = genres.explode().value_counts().head(10)
+
+sns.barplot(x=genres, y=genres.index)
+plt.title('Top 10 TV Show Genres')
+plt.xlabel('Number of TV Shows')
+plt.show()
+```
+
+![Top 10 TV Show Genres](https://i.imgur.com/5JZJZJL.png)
+
+6. Analyzing the countries with the most successful TV shows
+
+```python
+countries = tv_shows['country'].str.split(', ')
+countries = countries.explode().value_counts().head(10)
+
+sns.barplot(x=countries, y=countries.index)
+plt.title('Top 10 Countries with Successful TV Shows')
+plt.xlabel('Number of TV Shows')
+plt.show()
+```
+
+![Top 10 Countries with Successful TV Shows](https://i.imgur.com/5JZJZJL.png)
+
+7. Investigating the relationship between TV show duration and the number of seasons
+
+```python
+tv_shows['duration'] = tv_shows['duration'].str.replace('Seasons', '').str.strip()
+tv_shows['duration'] = tv_shows['duration'].astype(int)
+
+sns.scatterplot(data=tv_shows, x='seasons', y='duration')
+plt.title('TV Show Duration by Number of Seasons')
+plt.xlabel('Number of Seasons')
+plt.ylabel('Duration (in years)')
+plt.show()
+```
+
+![TV Show Duration by Number of Seasons](https://i.imgur.com/5JZJZJL.png)
