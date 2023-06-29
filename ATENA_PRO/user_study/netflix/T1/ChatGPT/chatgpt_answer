@@ -1,113 +1,38 @@
-Step 1: Importing necessary libraries and loading the dataset
+One approach could be to calculate the percentage of TV shows and movies in each country and compare it to the global percentage. We can assume that countries with a significantly different percentage of TV shows or movies compared to the global percentage have different viewing habits.
 
-We will start by importing the necessary libraries and loading the dataset into a pandas dataframe.
+Here's the pandas code to implement this approach:
 
 ```python
 import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
 
-# Load the dataset into a pandas dataframe
+# load the dataset
 df = pd.read_csv('netflix.tsv', sep='\t')
+
+# filter TV shows and movies
+df_tv = df[df['type'] == 'TV Show']
+df_movie = df[df['type'] == 'Movie']
+
+# calculate the global percentage of TV shows and movies
+global_tv_percent = len(df_tv) / len(df) * 100
+global_movie_percent = len(df_movie) / len(df) * 100
+
+# group by country and calculate the percentage of TV shows and movies
+country_tv_percent = df_tv.groupby('country').size() / df.groupby('country').size() * 100
+country_movie_percent = df_movie.groupby('country').size() / df.groupby('country').size() * 100
+
+# compare the country percentages to the global percentages
+atypical_countries = []
+for country in country_tv_percent.index:
+    tv_percent = country_tv_percent[country]
+    movie_percent = country_movie_percent[country]
+    if abs(tv_percent - global_tv_percent) > 10 or abs(movie_percent - global_movie_percent) > 10:
+        atypical_countries.append(country)
+
+print('Countries with atypical viewing habits:', atypical_countries)
 ```
 
-Step 2: Exploring the dataset
+In this code, we first filter the dataset to separate TV shows and movies. Then, we calculate the global percentage of TV shows and movies by dividing the number of TV shows/movies by the total number of entries in the dataset. 
 
-Before we start with the analysis, let's explore the dataset to get a better understanding of the data.
+Next, we group the dataset by country and calculate the percentage of TV shows and movies for each country. We then compare the country percentages to the global percentages and identify countries with a difference of more than 10%. We consider these countries to have atypical viewing habits.
 
-```python
-# Print the first 5 rows of the dataset
-print(df.head())
-
-# Print the shape of the dataset
-print(df.shape)
-
-# Print the column names of the dataset
-print(df.columns)
-
-# Print the data types of the columns
-print(df.dtypes)
-
-# Print the summary statistics of the dataset
-print(df.describe())
-```
-
-Step 3: Data cleaning
-
-Before we start with the analysis, we need to clean the data by removing any missing values and converting the necessary columns to the correct data types.
-
-```python
-# Drop any rows with missing values
-df.dropna(inplace=True)
-
-# Convert the date_added column to datetime data type
-df['date_added'] = pd.to_datetime(df['date_added'])
-
-# Convert the release_year column to integer data type
-df['release_year'] = df['release_year'].astype(int)
-
-# Convert the duration column to integer data type
-df['duration'] = df['duration'].apply(lambda x: int(x.split(' ')[0]))
-```
-
-Step 4: Data analysis
-
-Now that we have cleaned the data, we can start with the analysis. We will start by exploring the distribution of the countries in the dataset.
-
-```python
-# Plot the distribution of the countries in the dataset
-plt.figure(figsize=(10, 6))
-sns.countplot(x='country', data=df)
-plt.xticks(rotation=90)
-plt.show()
-```
-
-From the plot, we can see that the majority of the content in the dataset is from the United States, followed by India and the United Kingdom.
-
-Next, we will explore the distribution of the ratings in the dataset.
-
-```python
-# Plot the distribution of the ratings in the dataset
-plt.figure(figsize=(10, 6))
-sns.countplot(x='rating', data=df)
-plt.show()
-```
-
-From the plot, we can see that the majority of the content in the dataset is rated TV-MA, followed by TV-14 and TV-PG.
-
-Now, we will explore the distribution of the release years in the dataset.
-
-```python
-# Plot the distribution of the release years in the dataset
-plt.figure(figsize=(10, 6))
-sns.histplot(x='release_year', data=df, bins=30)
-plt.show()
-```
-
-From the plot, we can see that the majority of the content in the dataset was released in the last decade.
-
-Next, we will explore the distribution of the durations in the dataset.
-
-```python
-# Plot the distribution of the durations in the dataset
-plt.figure(figsize=(10, 6))
-sns.histplot(x='duration', data=df, bins=30)
-plt.show()
-```
-
-From the plot, we can see that the majority of the content in the dataset has a duration of around 100 minutes.
-
-Finally, we will explore the viewing habits of different countries by looking at the average duration of the content in each country.
-
-```python
-# Calculate the average duration of the content in each country
-avg_duration_by_country = df.groupby('country')['duration'].mean().reset_index()
-
-# Plot the average duration of the content in each country
-plt.figure(figsize=(10, 6))
-sns.barplot(x='country', y='duration', data=avg_duration_by_country)
-plt.xticks(rotation=90)
-plt.show()
-```
-
-From the plot, we can see that the average duration of the content in different countries is relatively similar, with the exception of Japan, which has a significantly lower average duration compared to the rest of the world.
+Finally, we print the list of atypical countries. Note that the threshold of 10% is arbitrary and can be adjusted based on the specific requirements of the task.
