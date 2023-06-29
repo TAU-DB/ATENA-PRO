@@ -36,10 +36,12 @@ def createPrompt(filename, scheme, numeric_columns, task):
 
     return f"""
 Dataset file name: \'{filename}\'
+    return f"""Dataset file name: \'{filename}\'
 Dataset scheme: {scheme}
 Dataset numeric columns: {numeric_columns}
 
 Write pandas code to answer the following task for the dataset provided above:
+Generate an EDA notebook (of 6-7 operations) that answers the following task for the dataset provided above:
 {task}"""
 
 t1 = "find a country with different, atypical viewing habits, compared to the rest of the world"
@@ -53,6 +55,7 @@ t11 = "investigate the characteristics of employees in the 90th percentile of sa
 # print(ChatGPT(createPrompt(filename=NETFLIX_FILENAME, scheme=NETFLIX_SCHEME, numeric_columns=NETFLIX_NUMERIC_COLUMNS, task=t1)))
 # print(ChatGPT(createPrompt(filename=NETFLIX_FILENAME, scheme=NETFLIX_SCHEME, numeric_columns=NETFLIX_NUMERIC_COLUMNS, task=t2)))
 # print(ChatGPT(createPrompt(filename=FLIGHTS_FILENAME, scheme=FLIGHTS_SCHEME, numeric_columns=FLIGHTS_NUMERIC_COLUMNS, task=t5)))
+print(ChatGPT(createPrompt(filename=FLIGHTS_FILENAME, scheme=FLIGHTS_SCHEME, numeric_columns=FLIGHTS_NUMERIC_COLUMNS, task=t5)))
 # print(ChatGPT(createPrompt(filename=FLIGHTS_FILENAME, scheme=FLIGHTS_SCHEME, numeric_columns=FLIGHTS_NUMERIC_COLUMNS, task=t6)))
 # print(ChatGPT(createPrompt(filename=PLAYSTORE_FILENAME, scheme=PLAYSTORE_SCHEME, numeric_columns=PLAYSTORE_NUMERIC_COLUMNS, task=t9)))
 # print(ChatGPT(createPrompt(filename=PLAYSTORE_FILENAME, scheme=PLAYSTORE_SCHEME, numeric_columns=PLAYSTORE_NUMERIC_COLUMNS, task=t10)))
