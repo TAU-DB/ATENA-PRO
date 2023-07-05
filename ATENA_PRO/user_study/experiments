@@ -1,9 +1,6 @@
 Yael: t1 (Subject 1), t3 (Subject 2), t5 (Subject 3)
 Omer: t1 (Subject 1), t4 (Subject 2), t6 (Subject 3)
-t1:
-t4:
-t6:
+Roni: t2 (Subject 1), t4 (Subject 2), t5 (Subject 3)
 
-Worker 3 (w3): t2 (Subject 1), t3 (Subject 2), t7 (Subject 4)
-Worker 4 (w4): t2 (Subject 1), t4 (Subject 2), t5 (Subject 3)
-Worker 5 (w5): t6 (Subject 3), t7 (Subject 4)
+Worker 4 (w4): t2 (Subject 1), t3 (Subject 2), t7 (Subject 4) # need to give sample
+Worker 5 (w5): t6 (Subject 3), t7 (Subject 4) # need to give sample
