@@ -1,0 +1,38 @@
+One approach could be to calculate the percentage of TV shows and movies in each country and compare it to the global percentage. We can assume that countries with a significantly different percentage of TV shows or movies compared to the global percentage have different viewing habits.
+
+Here's the pandas code to implement this approach:
+
+```python
+import pandas as pd
+
+# load the dataset
+df = pd.read_csv('netflix.tsv', sep='\t')
+
+# filter TV shows and movies
+df_tv = df[df['type'] == 'TV Show']
+df_movie = df[df['type'] == 'Movie']
+
+# calculate the global percentage of TV shows and movies
+global_tv_percent = len(df_tv) / len(df) * 100
+global_movie_percent = len(df_movie) / len(df) * 100
+
+# group by country and calculate the percentage of TV shows and movies
+country_tv_percent = df_tv.groupby('country').size() / df.groupby('country').size() * 100
+country_movie_percent = df_movie.groupby('country').size() / df.groupby('country').size() * 100
+
+# compare the country percentages to the global percentages
+atypical_countries = []
+for country in country_tv_percent.index:
+    tv_percent = country_tv_percent[country]
+    movie_percent = country_movie_percent[country]
+    if abs(tv_percent - global_tv_percent) > 10 or abs(movie_percent - global_movie_percent) > 10:
+        atypical_countries.append(country)
+
+print('Countries with atypical viewing habits:', atypical_countries)
+```
+
+In this code, we first filter the dataset to separate TV shows and movies. Then, we calculate the global percentage of TV shows and movies by dividing the number of TV shows/movies by the total number of entries in the dataset. 
+
+Next, we group the dataset by country and calculate the percentage of TV shows and movies for each country. We then compare the country percentages to the global percentages and identify countries with a difference of more than 10%. We consider these countries to have atypical viewing habits.
+
+Finally, we print the list of atypical countries. Note that the threshold of 10% is arbitrary and can be adjusted based on the specific requirements of the task.

@@ -1,0 +1,74 @@
+1. Importing necessary libraries and reading the dataset:
+
+```python
+import pandas as pd
+
+df = pd.read_csv('flights.tsv', sep='\t')
+```
+
+2. Checking the dataset:
+
+```python
+df.head()
+```
+
+3. Checking the data types of columns:
+
+```python
+df.dtypes
+```
+
+4. Checking the number of missing values in each column:
+
+```python
+df.isnull().sum()
+```
+
+5. Checking the summary statistics of numeric columns:
+
+```python
+df.describe()
+```
+
+6. Exploring the reasons for flight delays:
+
+```python
+# Total number of delayed flights
+total_delayed_flights = df[df['DEPARTURE_DELAY'] > 0]['DEPARTURE_DELAY'].count()
+
+# Number of flights delayed due to air system delay
+air_system_delayed_flights = df[df['AIR_SYSTEM_DELAY'] > 0]['AIR_SYSTEM_DELAY'].count()
+
+# Number of flights delayed due to security delay
+security_delayed_flights = df[df['SECURITY_DELAY'] > 0]['SECURITY_DELAY'].count()
+
+# Number of flights delayed due to airline delay
+airline_delayed_flights = df[df['AIRLINE_DELAY'] > 0]['AIRLINE_DELAY'].count()
+
+# Number of flights delayed due to late aircraft delay
+late_aircraft_delayed_flights = df[df['LATE_AIRCRAFT_DELAY'] > 0]['LATE_AIRCRAFT_DELAY'].count()
+
+# Number of flights delayed due to weather delay
+weather_delayed_flights = df[df['WEATHER_DELAY'] > 0]['WEATHER_DELAY'].count()
+
+# Percentage of flights delayed due to different reasons
+air_system_delay_percentage = (air_system_delayed_flights / total_delayed_flights) * 100
+security_delay_percentage = (security_delayed_flights / total_delayed_flights) * 100
+airline_delay_percentage = (airline_delayed_flights / total_delayed_flights) * 100
+late_aircraft_delay_percentage = (late_aircraft_delayed_flights / total_delayed_flights) * 100
+weather_delay_percentage = (weather_delayed_flights / total_delayed_flights) * 100
+
+print("Total number of delayed flights:", total_delayed_flights)
+print("Number of flights delayed due to air system delay:", air_system_delayed_flights)
+print("Number of flights delayed due to security delay:", security_delayed_flights)
+print("Number of flights delayed due to airline delay:", airline_delayed_flights)
+print("Number of flights delayed due to late aircraft delay:", late_aircraft_delayed_flights)
+print("Number of flights delayed due to weather delay:", weather_delayed_flights)
+print("Percentage of flights delayed due to air system delay:", air_system_delay_percentage)
+print("Percentage of flights delayed due to security delay:", security_delay_percentage)
+print("Percentage of flights delayed due to airline delay:", airline_delay_percentage)
+print("Percentage of flights delayed due to late aircraft delay:", late_aircraft_delay_percentage)
+print("Percentage of flights delayed due to weather delay:", weather_delay_percentage)
+```
+
+This code will output the total number of delayed flights and the number of flights delayed due to different reasons along with their percentages.

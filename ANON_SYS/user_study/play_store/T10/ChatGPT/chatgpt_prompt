@@ -1,0 +1,6 @@
+Dataset file name: 'play_store.tsv'
+Dataset scheme: app_id, name, category, rating, reviews, app_size_kb, installs, type, price, content_rating, last_updated, min_android_ver
+Dataset numeric columns: rating, reviews, app_size_kb, installs, price
+
+Write pandas code to answer the following task for the dataset provided above:
+compare high-rated (4.7 and above) apps with low-rated (2.5 and below) apps
