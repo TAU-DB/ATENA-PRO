@@ -1,0 +1,10 @@
+import pandas as pd
+
+# load the dataset
+df = pd.read_csv('play_store.tsv', sep='\t')
+
+# filter apps with at least one million installs
+df = df[df['installs'] >= 1000000]
+
+# show properties of apps with at least one million installs
+print(df[['app_name', 'category', 'rating', 'reviews', 'app_size_kb', 'installs', 'price']])

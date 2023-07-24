@@ -1,0 +1,24 @@
+# Read the dataset
+df = pd.read_csv('play_store.tsv', delimiter='\t')
+
+# Filter high-rated and low-rated apps
+high_rated = df[df['rating'] >= 4.7]
+low_rated = df[df['rating'] <= 2.5]
+
+# Calculate the mean number of reviews for high-rated and low-rated apps
+mean_high_reviews = high_rated['reviews'].mean()
+mean_low_reviews = low_rated['reviews'].mean()
+
+# Print the mean number of reviews for high-rated and low-rated apps
+print("Mean number of reviews for high-rated apps:", mean_high_reviews)
+print("Mean number of reviews for low-rated apps:", mean_low_reviews)
+
+# Perform a t-test to determine if there is a significant difference in the number of reviews
+from scipy.stats import ttest_ind
+
+t_stat, p_value = ttest_ind(high_rated['reviews'], low_rated['reviews'], equal_var=False)
+
+if p_value < 0.05:
+    print("There is a significant difference in the number of reviews between high-rated and low-rated apps.")
+else:
+    print("There is no significant difference in the number of reviews between high-rated and low-rated apps.")
