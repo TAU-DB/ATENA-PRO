@@ -11,8 +11,8 @@ The source code is located [here](ANON_SYS/src) (ANON_SYS/src) <br/>
 For installation guide, running instructions and further details please refer to the 
 documentation under the source code directory in the link above.
 
-## [Technical Report](ANON_SYS/technical_report)
-The paper's technical report is located [here](ANON_SYS/technical_report/Technical&#32;Report.pdf). <br/>
+## [LDX User Technical Guide](ANON_SYS/technical_report/ldx_user_guide.pdf)
+LDX user technical guide is located [here](ANON_SYS/technical_report/ldx_user_guide.pdf). <br/>
 
 ## [Datasets](ANON_SYS/datasets)
 The datasets are located [here](ANON_SYS/datasets) (ANON_SYS/datasets). <br/>
