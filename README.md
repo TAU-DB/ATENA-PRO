@@ -12,7 +12,7 @@ For installation guide, running instructions and further details please refer to
 documentation under the source code directory in the link above.
 
 ## [LDX Technical User Guide](ANON_SYS/LDX_user_guide.pdf)
-LDX user technical guide is located [here](ANON_SYS/LDX_user_guide.pdf). <br/>
+A simple user guide for writing LDX specifications is located [here](ANON_SYS/LDX_user_guide.pdf). <br/>
 
 ## [Experiment Datasets](ANON_SYS/datasets)
 The datasets used in our empirical evaluation are located [here](ANON_SYS/datasets) (ANON_SYS/datasets). <br/>
