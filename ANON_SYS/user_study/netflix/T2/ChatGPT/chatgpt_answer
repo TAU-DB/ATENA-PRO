@@ -1,0 +1,36 @@
+1. Import pandas library and read the dataset into a pandas dataframe:
+
+```python
+import pandas as pd
+
+df = pd.read_csv('netflix.tsv', sep='\t')
+```
+
+2. Filter the dataframe to only include TV shows with more than one season:
+
+```python
+tv_shows = df[df['type'] == 'TV Show']
+tv_shows_multiple_seasons = tv_shows[tv_shows['duration'].str.contains('\d+ Seasons')]
+```
+
+3. Investigate the properties of successful TV shows with more than one season:
+
+```python
+# Calculate the average release year of successful TV shows
+avg_release_year = tv_shows_multiple_seasons[tv_shows_multiple_seasons['release_year'].notnull()]['release_year'].mean()
+
+# Calculate the average duration of successful TV shows
+avg_duration = tv_shows_multiple_seasons['duration'].str.extract('(\d+)').astype(int).mean()
+
+# Calculate the most common rating of successful TV shows
+most_common_rating = tv_shows_multiple_seasons['rating'].mode()[0]
+
+# Calculate the most common country of successful TV shows
+most_common_country = tv_shows_multiple_seasons['country'].mode()[0]
+
+# Print the results
+print(f"Average release year of successful TV shows: {avg_release_year:.0f}")
+print(f"Average duration of successful TV shows: {avg_duration:.0f} seasons")
+print(f"Most common rating of successful TV shows: {most_common_rating}")
+print(f"Most common country of successful TV shows: {most_common_country}")
+```

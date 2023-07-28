@@ -1,0 +1,13 @@
+import pandas as pd
+
+# read in the dataset
+df = pd.read_csv('ds_salaries.tsv', delimiter='\t')
+
+# filter for employees with salary above 219,000
+high_salary = df[df['salary_in_usd'] > 219000]
+
+# calculate summary statistics for numeric columns
+high_salary.describe()
+
+# count the number of employees in each job title
+print(high_salary['job_title'].value_counts())
